@@ -71,9 +71,11 @@ foreach my $s (@{$Config{sources}}){
 }
 
 delete @Hosts{@{$Config{whitelist}}};
+my @Blocked = grep { $Hosts{$_}{SCORE} >= $Config{block_score} } keys %Hosts;
+print STDERR "Blocked ".scalar(@Blocked)." hosts\n";
 
 open my $OUT, ">$Config{hosts_file}";
 print $OUT join "\n", map { sprintf "%-15s\t%s", $_->{addr}, $_->{host} } @{$Config{custom}};
 print $OUT "\n\n";
-print $OUT join "\n", map { sprintf "%-15s\t%s", $Config{block_addr}, $_ } sort grep { $Hosts{$_}{SCORE} >= $Config{block_score} } keys %Hosts;
+print $OUT join "\n", map { sprintf "%-15s\t%s", $Config{block_addr}, $_ } sort @Blocked;
 close $OUT;
