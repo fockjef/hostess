@@ -31,11 +31,13 @@ my %Config = (
     source_dir  => "sources",
     block_score => 1.0,
     block_addr  => "0.0.0.0",
-    download    => 1,
     hosts_file  => "hosts"
 );
 
-GetOptions("download!"=>\$Config{download});
+my %Opts = (
+    download => 1
+);
+GetOptions("download!"=>\$Opts{download});
 
 if( !-d $Config{source_dir} ){
     mkdir $Config{source_dir} or die "ERROR: Cannot create directory '$Config{source_dir}'";
@@ -51,7 +53,7 @@ foreach my $s (@{$Config{sources}}){
     my $ext = ($s->{url} =~ /\.([^\/.]+?)$/)[0] || "txt";
     my $file = $Config{source_dir}."/".$s->{name}.($s->{type}?"-".$s->{type}:"").".".$ext;
 
-    if( $Config{download} ){
+    if( $Opts{download} ){
         print STDERR "\tDownloading\t";
         my $res = $ua->mirror($s->{url},$file);
         print STDERR $res->is_error ? "ERROR [ ".$res->status_line." ]\n" : ( $res->is_redirect ? "Not Modified\n" : (-s $file)." bytes\n");
