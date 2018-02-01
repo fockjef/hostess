@@ -2,7 +2,6 @@
 
 use strict;
 use Getopt::Long;
-use List::Util qw(sum);
 use LWP::UserAgent;
 
 my %Config = (
@@ -10,7 +9,7 @@ my %Config = (
         {host=>'localhost',addr=>'127.0.0.1'},
         {host=>'localhost ip6-localhost ip6-loopback',addr=>'::1'},
         {host=>'ip6-allnodes',addr=>'ff02::1'},
-        {host=>'ip6-allrouters',addr=>'ff02::2'}
+        {host=>'ip6-allrouters',addr=>'ff02::2'},
     ],
     sources => [
         {name=>'airel',type=>'mis' ,weight=>0.35,url=>'http://rlwpx.free.fr/WPFF/hmis.7z'},
