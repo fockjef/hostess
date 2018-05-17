@@ -44,7 +44,7 @@ foreach my $s (@{$Config->{sources}}){
     
     print STDERR "\tProcessing\t";
     my $n = 0;
-    open my $DATA, ($ext eq "txt" ? $file : "7z.exe e -so $file 2>$NULL |") or die "ERROR: Cannot open file '$file'";
+    open my $DATA, ($ext eq "txt" ? $file : "7z e -so $file 2>$NULL |") or die "ERROR: Cannot open file '$file'";
     foreach my $h (map {(split)[1]} grep {/^\s*(?:127\.0\.0\.1|0\.0\.0\.0)\s+/} <$DATA>){
         if( !exists $Hosts{$h}{$s->{name}} || $Hosts{$h}{$s->{name}} < $s->{weight} ){
             $Hosts{$h}{SCORE} += $s->{weight}-$Hosts{$h}{$s->{name}};
