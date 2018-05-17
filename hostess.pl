@@ -6,18 +6,25 @@ use JSON;
 use List::Util qw(sum);
 use LWP::UserAgent;
 
-our $VERSION = "1.0.20180517";
+our $VERSION = "1.0.20180517-1";
 
 my $NULL = $^O eq "MSWin32" ? "NUL" : "/dev/null";
 
 my %Opts = (
-	config => 'hostess.conf',
-	download => 1
+    config => 'hostess.conf',
+    download => 1,
+    help => 0,
+    version => 0
 );
 GetOptions(
-	"config:s"=>\$Opts{config},
-	"download!"=>\$Opts{download}
+    "config:s"=>\$Opts{config},
+    "download!"=>\$Opts{download},
+    "help"=>\$Opts{help},
+    "version"=>\$Opts{version}
 );
+
+exit print_usage()   if $Opts{'help'};
+exit print_version() if $Opts{'version'};
 
 my $json = do{local $/;open my $IN, $Opts{config} or die "ERROR: Cannot open config file ($Opts{config})";<$IN>};
 my $Config = eval { decode_json $json } or die "ERROR: Cannot parse json";
@@ -41,7 +48,7 @@ foreach my $s (@{$Config->{sources}}){
         my $res = $ua->mirror($s->{url},$file);
         print STDERR $res->is_error ? "ERROR [ ".$res->status_line." ]\n" : ( $res->is_redirect ? "Not Modified\n" : (-s $file)." bytes\n");
     }
-    
+
     print STDERR "\tProcessing\t";
     my $n = 0;
     open my $DATA, ($ext eq "txt" ? $file : "7z e -so $file 2>$NULL |") or die "ERROR: Cannot open file '$file'";
@@ -64,3 +71,24 @@ print $OUT join "\n", map { sprintf "%-15s\t%s", $_->{addr}, $_->{host} } @{$Con
 print $OUT "\n\n";
 print $OUT join "\n", map { sprintf "%-15s\t%s", $Config->{block_addr}, $_ } sort @Blocked;
 close $OUT;
+
+sub print_version{
+    print "hostess - hosts file aggregator v$VERSION\n";
+    return 0;
+}
+
+sub print_usage{
+    print_version();
+    print "\n", do{local $/;<DATA>};
+    return 0;
+}
+
+__DATA__
+Usage:
+    hostess.exe [options]
+
+Options:
+    --config        [file]
+    --nodownload
+    --help
+    --version
