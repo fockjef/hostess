@@ -41,6 +41,7 @@ my %Hosts;
 foreach my $s (@{$Config->{sources}}){
     print STDERR $s->{name}, " ", ($s->{type}?"($s->{type})":""), ":\n";
     my $ext = ($s->{url} =~ /\.([^\/.]+?)$/)[0] || "txt";
+    $ext = "txt" if $ext =~ /^php/;
     my $file = $Config->{source_dir}."/".$s->{name}.($s->{type}?"-".$s->{type}:"").".".$ext;
 
     if( $Opts{download} ){
