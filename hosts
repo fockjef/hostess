@@ -448,7 +448,6 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	ad.it.doubleclick.net
 0.0.0.0        	ad.jamba.net
 0.0.0.0        	ad.jamster.ca
-0.0.0.0        	ad.jamster.co.uk
 0.0.0.0        	ad.jamster.com
 0.0.0.0        	ad.janalta.com
 0.0.0.0        	ad.jetsoftware.com
@@ -1719,7 +1718,6 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	adserver.lonuncavisto.com
 0.0.0.0        	adserver.lunarpages.com
 0.0.0.0        	adserver.lycos.co.jp
-0.0.0.0        	adserver.madeby.ws
 0.0.0.0        	adserver.magazyn.pl
 0.0.0.0        	adserver.matchcraft.com
 0.0.0.0        	adserver.millionairemate.com
@@ -3234,7 +3232,6 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	cgmt.co.id
 0.0.0.0        	chacha.112.2o7.net
 0.0.0.0        	channelvue.com.au
-0.0.0.0        	chardwardse.club
 0.0.0.0        	charging-technology.com
 0.0.0.0        	charmflirt.com
 0.0.0.0        	charmstroy.info
@@ -7314,6 +7311,7 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	oix.com
 0.0.0.0        	oix.net
 0.0.0.0        	oj.likewut.net
+0.0.0.0        	ojrq.net
 0.0.0.0        	ok.5.p2l.info
 0.0.0.0        	okclub.org.uk
 0.0.0.0        	okcounter.com
@@ -8108,7 +8106,6 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	reloading-page1.com
 0.0.0.0        	reloadinput.com
 0.0.0.0        	rem.rezonmedia.eu
-0.0.0.0        	remistrainew.club
 0.0.0.0        	remodelingonlinecom.112.2o7.net
 0.0.0.0        	rencontreavenue.com
 0.0.0.0        	reninet.com
@@ -9314,7 +9311,6 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	temp.adzerver.com
 0.0.0.0        	tempest.services.disqus.com
 0.0.0.0        	tenuate.1.p2l.info
-0.0.0.0        	tercept.com
 0.0.0.0        	tescostores.122.2o7.net
 0.0.0.0        	test.coremetrics.com
 0.0.0.0        	test.ishvara-yoga.com
@@ -9897,6 +9893,7 @@ ff02::2        	ip6-allrouters
 0.0.0.0        	use.convertglobal.com
 0.0.0.0        	usemax.de
 0.0.0.0        	user-registration.com
+0.0.0.0        	userreplay.net
 0.0.0.0        	users.cuci.nl
 0.0.0.0        	users.effectivebrand.com
 0.0.0.0        	usnews.122.2o7.net
